@@ -5,10 +5,13 @@ import Model.Coordinates;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
+import static Controller.ClassOfConst.columnCount;
+import static Controller.ClassOfConst.valueX;
+import static Controller.ClassOfConst.valueY;
 
 public class ModelTable extends AbstractTableModel {
 
-    private static final int columnCount = 2;
+
     private ArrayList<Coordinates> list;
 
     public  ModelTable()
@@ -19,12 +22,11 @@ public class ModelTable extends AbstractTableModel {
     public String getColumnName(int columnIndex)
     {
         switch (columnIndex) {
-            case 0: return "x";
-            case 1: return "F(x)";
+            case valueX: return "x";
+            case valueY: return "F(x)";
         }
         return  "";
     }
-
 
     @Override
     public int getRowCount() {

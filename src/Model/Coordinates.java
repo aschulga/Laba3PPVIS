@@ -1,27 +1,25 @@
 package Model;
 
-/**
- * Created by Asus on 23.05.2017.
- */
+import java.awt.geom.Point2D;
+
+import static Controller.ClassOfConst.valueX;
+import static Controller.ClassOfConst.valueY;
+
 public class Coordinates {
 
-    public static final int CoordX = 0;
-    public static final int CoordY = 1;
-    private  double x;
-    private  double y;
+    private Point2D point;
 
-    public Coordinates(double x,double y)
+    public Coordinates(Point2D point)
     {
-        this.x = x;
-        this.y = y;
+        this.point = point;
     }
 
     public Object getValue(int index)
     {
         switch (index)
         {
-            case CoordX: return x;
-            case CoordY: return y;
+            case valueX: return point.getX();
+            case valueY: return point.getY();
 
         }
         return null;

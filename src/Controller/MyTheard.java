@@ -3,6 +3,8 @@ package Controller;
 import Model.Coordinates;
 import View.MyFrame;
 
+import java.awt.geom.Point2D;
+
 
 public class MyTheard implements Runnable {
 
@@ -26,14 +28,15 @@ public class MyTheard implements Runnable {
 
             y = (Math.exp(-frame.getA() * i + frame.getB())) / (Math.pow(i, 3) - frame.getC());
 
-            Coordinates coordinates = new Coordinates(i, y);
+            Coordinates coordinates = new Coordinates(new Point2D.Double(i, y) {
+            });
 
             controller.addCoord(coordinates);
 
             frame.generationTable();
 
             try{
-                Thread.sleep((long) 100);
+                Thread.sleep((long) 0.0001);
             }catch (InterruptedException e)
             {
                 e.printStackTrace();

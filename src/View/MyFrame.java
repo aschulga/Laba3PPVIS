@@ -19,11 +19,10 @@ public class MyFrame {
     private double step = 0.1;
     private PaintPanel seeGraph;
     private JScrollPane jsp;
-
     private GraphicsController controller;
+    private boolean value = false;
 
     JButton buildButton = new JButton("Построить график");
-
     JLabel createA = new JLabel("Введите a: ");
     JTextField textFieldA = new JTextField(5);
     JLabel createB = new JLabel("Введите b: ");
@@ -33,10 +32,7 @@ public class MyFrame {
     JLabel createX = new JLabel("Введите диапазон переменной x: ");
     JTextField textFieldOneValue = new JTextField(5);
     JTextField textFieldTwoValue = new JTextField(5);
-
     JLabel labelPercent = new JLabel("100"+" %");
-
-
     Table table;
 
 
@@ -45,10 +41,8 @@ public class MyFrame {
         this.d = d;
         this.controller = controller;
         table  = new Table(controller);
-
         seeGraph = new PaintPanel(controller,MyFrame.this);
         jsp = new JScrollPane(seeGraph);
-        seeGraph.setPreferredSize(seeGraph.getInitialSize());
     }
 
     public void init() {
@@ -58,13 +52,10 @@ public class MyFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.add(buildButton, BorderLayout.SOUTH);
-
         table.getJsp().setPreferredSize(new Dimension(500,200));
         frame.add(table.getJsp(),BorderLayout.WEST);
-
         jsp.setPreferredSize(new Dimension(700,700));
         frame.add(jsp, BorderLayout.EAST);
-
         buildButton.addActionListener(new buildButtonActionListener());
 
         JPanel operationsPanel = new JPanel();
@@ -131,6 +122,11 @@ public class MyFrame {
         return step;
     }
 
+    public boolean getValue()
+    {
+        return value;
+    }
+
     public class buildButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -146,7 +142,7 @@ public class MyFrame {
 
             else {
                 new MyTheard(controller,MyFrame.this);
-
+                value = true;
             }
 
         }
@@ -157,4 +153,5 @@ public class MyFrame {
         table.addCoord();
         frame.repaint();
     }
+
 }

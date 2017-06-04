@@ -22,7 +22,6 @@ public class Table {
 
     public void addCoord()
     {
-       // this.controller = controller;
 
         model.deleteAll();
 
@@ -30,8 +29,6 @@ public class Table {
         {
             model.add(controller.get(i));
         }
-
-
 
     }
 
