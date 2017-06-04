@@ -4,15 +4,18 @@ import Model.Coordinates;
 import View.MyFrame;
 
 
-public class MyTheard extends Thread {
+public class MyTheard implements Runnable {
 
     private GraphicsController controller;
     private MyFrame frame;
+    private Thread thread;
 
     public MyTheard(GraphicsController controller,MyFrame frame)
     {
         this.controller = controller;
         this.frame = frame;
+        thread = new Thread(this);
+        thread.start();
     }
 
     public void run()
@@ -20,6 +23,7 @@ public class MyTheard extends Thread {
         controller.deleteAll();
         double y;
         for (double i = frame.getX1(); i <= frame.getX2(); i += frame.getStep()) {
+
             y = (Math.exp(-frame.getA() * i + frame.getB())) / (Math.pow(i, 3) - frame.getC());
 
             Coordinates coordinates = new Coordinates(i, y);
@@ -29,7 +33,7 @@ public class MyTheard extends Thread {
             frame.generationTable();
 
             try{
-                Thread.sleep((long) 0.1);
+                Thread.sleep((long) 100);
             }catch (InterruptedException e)
             {
                 e.printStackTrace();

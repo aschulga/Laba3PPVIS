@@ -145,8 +145,8 @@ public class MyFrame {
                 JOptionPane.showMessageDialog(new Frame(), "Введены некорректные данные. Для продолжения работы нажмите \"ОК\"");
 
             else {
-                Thread t1 = new MyTheard(controller, MyFrame.this);
-                t1.start();
+                new MyTheard(controller,MyFrame.this);
+
             }
 
         }
@@ -154,7 +154,7 @@ public class MyFrame {
 
     public void generationTable()
     {
-        table.addCoord(controller);
+        table.addCoord();
         frame.repaint();
     }
 }

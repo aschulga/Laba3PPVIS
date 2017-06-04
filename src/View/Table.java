@@ -20,20 +20,9 @@ public class Table {
         this.controller = controller;
     }
 
-/*
-    public JPanel createTable()
+    public void addCoord()
     {
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridBagLayout());
-        panel.add(jsp,new GridBagConstraints(0, 0, 1, 1, 1, 1,
-                GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 0, 0));
-
-        return panel;
-    }*/
-
-    public void addCoord(GraphicsController controller)
-    {
-        this.controller = controller;
+       // this.controller = controller;
 
         model.deleteAll();
 
